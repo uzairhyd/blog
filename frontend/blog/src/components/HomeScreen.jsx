@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import {Button} from 'react-bootstrap'
 
-function HomeScreen({value}){
+function HomeScreen(){
     const [posts, setPosts] = useState([])
 
     useEffect(() =>{
@@ -16,10 +16,11 @@ function HomeScreen({value}){
 
     return(
         <div>
-            {posts.map(p => (<div key={p.id}>
-                <h1>{p.post_title}</h1>
-                <p>{p.post_body}</p> posted on - 
-                <small>{p.post_date}</small>
+            {posts.map(p => (
+                <div key={p.id}>
+                <h1>{p.title}</h1>
+                <p>{p.excerpt}</p>
+                <small>{p.published}</small> <a href={`/${p.id}`}>Read More</a>
             </div>))}
         </div>
     )
